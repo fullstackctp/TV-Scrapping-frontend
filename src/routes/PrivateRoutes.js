@@ -16,6 +16,7 @@ function PrivateRoutes() {
     useEffect(() => {
         navigate(slugs.dashboard)
     },[])
+    
     return (
         <Suspense fallback={<LoadingComponent loading />}>
             <Routes >

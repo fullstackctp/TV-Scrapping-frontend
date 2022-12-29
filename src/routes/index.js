@@ -6,9 +6,9 @@ import PublicRoutes from 'routes/PublicRoutes';
 import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import slugs from 'resources/slugs';
-import { authLoginAction } from 'store/actions/loginAction';
 
 function Routes() {
+    
     const { pathname } = useLocation();
 
     const auth = useSelector(state => state.authLoginReducer)
@@ -18,9 +18,9 @@ function Routes() {
     const [isUserLoggedIn , setIsUserLoggedIn] = useState(false)
 
     useEffect(() => {
-        console.log(auth?.data?.email,'kk000000000')
+        console.log(auth?.data,'kk000000000')
         window.scrollTo(0, 0);
-        if(auth?.data?.email) {
+        if(JSON.parse(localStorage.getItem('userData'))?.user?.email) {
             setIsUserLoggedIn(true)
         } else {
             setIsUserLoggedIn(false)

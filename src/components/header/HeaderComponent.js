@@ -8,7 +8,7 @@ import SLUGS from 'resources/slugs';
 import { IconBell, IconSearch } from 'assets/icons';
 import DropdownComponent from 'components/dropdown';
 import { useDispatch } from 'react-redux';
-import { authLoginAction } from 'store/actions/loginAction';
+import { authLogout, logout } from 'store/actions/loginAction';
 
 const useStyles = createUseStyles((theme) => ({
     avatar: {
@@ -158,7 +158,7 @@ function HeaderComponent() {
                         },
                         {
                             label: 'Logout',
-                            onClick: () => dispatch(authLoginAction({email : '',password : '',remember : false}))
+                            onClick: () => dispatch(authLogout({email : '',password : '',remember : false}))
                         }
                     ]}
                     position={{

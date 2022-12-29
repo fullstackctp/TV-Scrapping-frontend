@@ -22,15 +22,15 @@ const fetchDataFailure = (err) => {
 }
 
 const dsahboardDataAction = (payload) => {
-//     axios.post('http://127.0.0.1:8000/login/',{
-//     "username": "root",
-//     "email": "",
-//     "password": "root"
-// })
+    console.log(JSON.parse(localStorage.getItem('userData')).access_token,'dataishere===============')
     return dispatch => {
         dispatch(fetchData())
         axios
-        .post("http://localhost:8000/dash/", {stocks : payload.stock,limit : parseInt(payload.limit)})
+        .post("http://localhost:8000/dash/", {stocks : payload.stock,limit : parseInt(payload.limit)},{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('userData')).access_token}`
+            }})
         .then((res) => {
           console.log(res,'resishsuccess')
           dispatch(fetchDataSuccess(res.data))

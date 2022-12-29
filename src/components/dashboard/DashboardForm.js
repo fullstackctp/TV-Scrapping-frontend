@@ -34,7 +34,6 @@ import { useDispatch} from 'react-redux'
 
 import { Form, Formik } from "formik";
 import slugs from "resources/slugs";
-import { authLoginAction } from "store/actions/loginAction";
 import dsahboardDataAction from "store/actions/dashboardAction";
 
 // ** Styled Components
@@ -61,12 +60,11 @@ const DashboardForm = () => {
   const theme = useTheme();
   const dispatch = useDispatch()
 
-  
   const handleSubmit = (values) => {
     console.log({...values,stock:values.stock.split(',')},'valueslakdsfklllllllllll')
     dispatch(dsahboardDataAction({...values,stock:values.stock.toUpperCase().split(',')}))
   };
-
+  
   return (
     <Box
       sx={{

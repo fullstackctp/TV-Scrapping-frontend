@@ -36,10 +36,10 @@ import EyeOutline from "mdi-material-ui/EyeOutline";
 import EyeOffOutline from "mdi-material-ui/EyeOffOutline";
 
 import { Form, Formik } from "formik";
-import { authLoginAction } from "store/actions/loginAction";
 import axios from "axios";
 import SLUGS from "resources/slugs";
 import GoogleButton from "react-google-button";
+import { authGoogleLogin, authSignup } from "store/actions/loginAction";
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -61,18 +61,22 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
 
 const Signup = () => {
   // ** Hook
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const dispatch = useDispatch()
 
   const theme = useTheme();
 
   const handleSubmit = (values) => {
     console.log(values,'vlaueskaskdj')
-    // dispatch(authLoginAction(values))
+    dispatch(authSignup(values))
   };
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
+  const handleClickShowPassword1 = () => {
+    setShowPassword1(!showPassword1);
+  };
+  const handleClickShowPassword2 = () => {
+    setShowPassword2(!showPassword2);
   };
 
   const responseGoogle = async (response) => {
@@ -85,7 +89,8 @@ const Signup = () => {
   }
 
   const handleGoogleLogin = (codeResponse) => {
-    axios.post('http://localhost:8000/google/',codeResponse).then(res => console.log(res,'resishere')).catch(err => console.log(err,'errorishere'))
+    // axios.post('http://localhost:8000/google/',codeResponse).then(res => console.log(res,'resishere')).catch(err => console.log(err,'errorishere'))
+    dispatch(authGoogleLogin(codeResponse))
   }
 
   const login = useGoogleLogin({
@@ -138,9 +143,9 @@ const Signup = () => {
           <Formik
             initialValues={{
               email: "",
-              userName : "",
-              password: "",
-              confirmPassword:"",
+              username : "",
+              password1: "",
+              password2:"",
               remember: false,
             }}
             onSubmit={handleSubmit}
@@ -162,56 +167,56 @@ const Signup = () => {
                     autoComplete="off"
                     fullWidth
                     type="text"
-                    name="userName"
-                    id="userName"
-                    value={formik.values.userName}
+                    name="username"
+                    id="username"
+                    value={formik.values.username}
                     onChange={formik.handleChange}
                     label="User Name"
                     sx={{ marginBottom: 4 }}
                   />
                   <FormControl fullWidth sx={{ marginBottom: 4 }}>
-                    <InputLabel htmlFor="auth-login-password">
+                    <InputLabel htmlFor="auth-login-password1">
                       Password
                     </InputLabel>
                     <OutlinedInput
                       label="Password"
-                      name="password"
-                      value={formik.values.password}
-                      id="auth-login-password"
+                      name="password1"
+                      value={formik.values.password1}
+                      id="auth-login-password1"
                       onChange={formik.handleChange}
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword1 ? "text" : "password1"}
                       endAdornment={
                         <InputAdornment position="end">
                           <IconButton
                             edge="end"
-                            onClick={handleClickShowPassword}
+                            onClick={handleClickShowPassword1}
                             aria-label="toggle password visibility"
                           >
-                            {showPassword ? <EyeOutline /> : <EyeOffOutline />}
+                            {showPassword1 ? <EyeOutline /> : <EyeOffOutline />}
                           </IconButton>
                         </InputAdornment>
                       }
                     />
                   </FormControl>
                   <FormControl fullWidth>
-                    <InputLabel htmlFor="auth-login-password">
+                    <InputLabel htmlFor="auth-login-password2">
                       Confirm Password
                     </InputLabel>
                     <OutlinedInput
                       label="Confirm Password"
-                      name="confirmPassword"
-                      value={formik.values.confirmPassword}
-                      id="auth-login-confirmPassword"
+                      name="password2"
+                      value={formik.values.password2}
+                      id="auth-login-password2"
                       onChange={formik.handleChange}
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword2 ? "text" : "password2"}
                       endAdornment={
                         <InputAdornment position="end">
                           <IconButton
                             edge="end"
-                            onClick={handleClickShowPassword}
+                            onClick={handleClickShowPassword2}
                             aria-label="toggle password visibility"
                           >
-                            {showPassword ? <EyeOutline /> : <EyeOffOutline />}
+                            {showPassword2 ? <EyeOutline /> : <EyeOffOutline />}
                           </IconButton>
                         </InputAdornment>
                       }

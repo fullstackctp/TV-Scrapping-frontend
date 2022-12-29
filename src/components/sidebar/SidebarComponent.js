@@ -17,7 +17,7 @@ import { convertSlugToUrl } from 'resources/utilities';
 import LogoComponent from './LogoComponent';
 import Menu from './MenuComponent';
 import MenuItem from './MenuItemComponent';
-import { authLoginAction } from 'store/actions/loginAction';
+import {authLogout, logout}  from 'store/actions/loginAction';
 import { useDispatch } from 'react-redux';
 
 const useStyles = createUseStyles({
@@ -38,7 +38,7 @@ function SidebarComponent() {
     const dispatch = useDispatch()
 
     function logout() {
-        dispatch(authLoginAction({email : '',password : '',remember : false}))
+        dispatch(authLogout({email : '',password : '',remember : false}))
     }
 
     function onClick(slug, parameters = {}) {

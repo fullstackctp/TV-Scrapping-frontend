@@ -36,7 +36,7 @@ import EyeOutline from "mdi-material-ui/EyeOutline";
 import EyeOffOutline from "mdi-material-ui/EyeOffOutline";
 
 import { Form, Formik } from "formik";
-import { authLoginAction } from "store/actions/loginAction";
+import authLogin, { authGoogleLogin } from "store/actions/loginAction";
 import axios from "axios";
 import SLUGS from "resources/slugs";
 
@@ -66,7 +66,7 @@ const Login = () => {
   const theme = useTheme();
 
   const handleSubmit = (values) => {
-    dispatch(authLoginAction(values))
+    dispatch(authLogin(values))
   };
 
   const handleClickShowPassword = () => {
@@ -83,7 +83,8 @@ const Login = () => {
   }
 
   const handleGoogleLogin = (codeResponse) => {
-    axios.post('http://localhost:8000/google/',codeResponse).then(res => console.log(res,'resishere')).catch(err => console.log(err,'errorishere'))
+    // axios.post('http://localhost:8000/google/',codeResponse).then(res => console.log(res,'resishere')).catch(err => console.log(err,'errorishere'))
+    dispatch(authGoogleLogin(codeResponse))
   }
 
   const login = useGoogleLogin({
@@ -135,7 +136,7 @@ const Login = () => {
           </Box>
           <Formik
             initialValues={{
-              email: "",
+              username: "",
               password: "",
               remember: false,
             }}
@@ -145,13 +146,14 @@ const Login = () => {
               return (
                 <Form onSubmit={formik.handleSubmit}>
                   <TextField
-                    autoFocus
+                    autoComplete="off"
                     fullWidth
-                    name="email"
-                    id="email"
-                    value={formik.values.email}
+                    type="text"
+                    name="username"
+                    id="username"
+                    value={formik.values.username}
                     onChange={formik.handleChange}
-                    label="Email"
+                    label="User Name"
                     sx={{ marginBottom: 4 }}
                   />
                   <FormControl fullWidth>

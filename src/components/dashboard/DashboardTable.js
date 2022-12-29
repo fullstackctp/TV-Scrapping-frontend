@@ -12,29 +12,23 @@ import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
 
 const columns = [
-  { id: 'stock', label: 'Stock', minWidth: 170 },
-  { id: 'short', label: 'Short', minWidth: 100 },
+  { id: 'Stock', label: 'Stock', minWidth: 170 },
+  { id: 'Short', label: 'Short', minWidth: 100 },
   {
-    id: 'long',
+    id: 'Long',
     label: 'Long',
     minWidth: 170,
     align: 'right',
     format: value => value.toLocaleString('en-US')
   },
   {
-    id: 'total',
+    id: 'Total',
     label: 'Total',
     minWidth: 170,
     align: 'right',
     format: value => value.toLocaleString('en-US')
   },
- 
 ]
-function createData(stock, short, long, total) {
-
-  return { stock, short, long, total }
-}
-
 
 const DashboardTable = ({ rows }) => {
   // ** States
