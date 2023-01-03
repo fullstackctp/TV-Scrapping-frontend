@@ -18,7 +18,6 @@ function Routes() {
     const [isUserLoggedIn , setIsUserLoggedIn] = useState(false)
 
     useEffect(() => {
-        console.log(auth?.data,'kk000000000')
         window.scrollTo(0, 0);
         if(JSON.parse(localStorage.getItem('userData'))?.user?.email) {
             setIsUserLoggedIn(true)

@@ -9,6 +9,8 @@ import { IconBell, IconSearch } from 'assets/icons';
 import DropdownComponent from 'components/dropdown';
 import { useDispatch } from 'react-redux';
 import { authLogout, logout } from 'store/actions/loginAction';
+import ModeToggler from './ModeToggler';
+import useSettings from 'hooks/useSettings';
 
 const useStyles = createUseStyles((theme) => ({
     avatar: {
@@ -67,6 +69,8 @@ function HeaderComponent() {
     const theme = useTheme();
     const dispatch = useDispatch()
     const classes = useStyles({ theme });
+    const {settings,saveSettings} = useSettings()
+    console.log(settings,'settings')
 
     let title;
     switch (true) {
@@ -112,7 +116,7 @@ function HeaderComponent() {
                 {/* <div className={classes.iconStyles}>
                     <IconSearch />
                 </div> */}
-                <div className={classes.iconStyles}>
+                {/* <div className={classes.iconStyles}>
                     <DropdownComponent
                         label={<IconBell />}
                         options={[
@@ -138,7 +142,8 @@ function HeaderComponent() {
                             right: -14
                         }}
                     />
-                </div>
+                </div> */}
+                <ModeToggler settings={settings} saveSettings={saveSettings} />
                 <div className={classes.separator}></div>
                 <DropdownComponent
                     label={
