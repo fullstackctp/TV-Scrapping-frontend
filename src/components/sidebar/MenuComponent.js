@@ -33,12 +33,13 @@ const getMenuStyles = ({ theme,settings }) => {
             zIndex: 30
         },
         bmMenu: {
-            // borderRight : '3px solid white',
+            borderRight : '0.1px solid rgba(255, 255, 255, 0.1)',
             // background: theme.color.grayishBlue3
             // backgroundImage: `linear-gradient(98deg, #6AAAFF,${theme.color.grayishBlue3} 94%)`
             // backgroundImage: `linear-gradient(98deg, #EEF2F8,${theme.color.grayishBlue3} 94%)`
             // backgroundImage: `linear-gradient(98deg, #F6F8FB,${theme.color.grayishBlue3} 94%)`
-            backgroundImage: settings.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#092256,#092256 94%)`,
+            backgroundImage: settings.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#000004,#000004 94%)`,
+            // backgroundImage: settings.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#0f0f0f,#0f0f0f 94%)`,
         },
         bmItem: {
             outline: 'none',

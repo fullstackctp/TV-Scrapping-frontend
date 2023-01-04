@@ -6,7 +6,7 @@ import WeatherSunny from 'mdi-material-ui/WeatherSunny'
 
 const ModeToggler = props => {
   // ** Props
-  const { settings, saveSettings } = props
+  const { settings, saveSettings,className } = props
 
   const handleModeChange = mode => {
     console.log(mode)
@@ -23,7 +23,7 @@ const ModeToggler = props => {
   }
 
   return (
-    <IconButton color='inherit' aria-haspopup='true' onClick={handleModeToggle}>
+    <IconButton className={className} color='inherit' aria-haspopup='true' onClick={handleModeToggle}>
       {settings.mode === 'dark' ? <WeatherSunny /> : <WeatherNight />}
     </IconButton>
   )

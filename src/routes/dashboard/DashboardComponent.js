@@ -20,7 +20,7 @@ import DashboardTable from 'components/dashboard/DashboardTable';
 const useStyles = createUseStyles({
     cardsContainer: {
         marginRight: -30,
-        marginTop: -30
+        marginTop: -30,
     },
     cardRow: {
         marginTop: 30,

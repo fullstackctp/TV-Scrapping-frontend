@@ -22,9 +22,15 @@ import { useDispatch } from 'react-redux';
 
 const useStyles = createUseStyles({
     separator: {
-        borderTop: ({ theme }) => `1px solid ${theme.color.lightGrayishBlue}`,
+        borderTop: ({ theme }) => `1px solid rgba(255, 255, 255)`,
         marginTop: 16,
         marginBottom: 16,
+        opacity: 0.06
+    },
+    separator2: {
+        borderTop: ({ theme }) => `2px solid rgba(255, 255, 255)`,
+        marginTop: -2,
+        marginBottom: 26,
         opacity: 0.06
     }
 });
@@ -50,6 +56,7 @@ function SidebarComponent() {
             <div style={{ paddingTop: 30, paddingBottom: 30 }}>
                 <LogoComponent />
             </div>
+            <div className={classes.separator2}></div>
             <MenuItem
                 id={SLUGS.dashboard}
                 title='Dashboard'

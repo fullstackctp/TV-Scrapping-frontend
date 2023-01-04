@@ -12,7 +12,16 @@ const useStyles = createUseStyles({
     container: {
         height: '100%',
         minHeight: 850,
-        // backgroundImage :({theme,settings}) => settings.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#092256,#092256 94%)`
+        // backgroundColor : "red"
+        // backgroundColor:({theme,settings}) => {console.log(settings,'======++++++++++++++++==');  return settings?.mode === 'light' ? 'white' : 'black'},
+        backgroundImage: ({theme,settings}) => {    
+            console.log(settings,']]]]]]]]]')
+            let element = document.getElementsByTagName('body')[0]
+            element.style.backgroundImage = settings?.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#000004,#000004 94%)`
+            // element.style.color = 'white'
+            // console.log(element,'elemen tisheere')
+            // return settings?.mode == 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#092256,#092256 94%)`
+        }
     },
     mainBlock: {
         marginLeft: 255,
@@ -33,7 +42,6 @@ function PrivateSection() {
     const classes = useStyles({ theme,settings });
 
     return (
-        <SettingsProvider>
             <SidebarContext>
                 <Row className={classes.container}>
                     <SidebarComponent />
@@ -45,7 +53,6 @@ function PrivateSection() {
                     </Column>
                 </Row>
             </SidebarContext>
-        </SettingsProvider>
     );
 }
 

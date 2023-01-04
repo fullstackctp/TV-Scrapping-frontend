@@ -28,7 +28,7 @@ const useStyles = createUseStyles({
     },
     leftBar: {
         borderLeft: ({ theme, level }) =>
-            level > 1 ? 'none' : `3px solid ${theme.color.darkGrayishBlue}`,
+            level > 1 ? 'none' : `0px solid ${theme.color.darkGrayishBlue}`,
     },
     title: {
         fontSize: 16,

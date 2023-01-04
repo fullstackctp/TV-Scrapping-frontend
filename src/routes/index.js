@@ -6,6 +6,7 @@ import PublicRoutes from 'routes/PublicRoutes';
 import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import slugs from 'resources/slugs';
+import SettingsProvider from 'context/settingsContext';
 
 function Routes() {
     
@@ -26,7 +27,7 @@ function Routes() {
         }
     }, [pathname,auth]);
 
-    return isUserLoggedIn ? <PrivateSection /> : <PublicRoutes />;
+    return isUserLoggedIn ? <SettingsProvider><PrivateSection /></SettingsProvider> : <PublicRoutes />;
 }
 
 export default Routes;

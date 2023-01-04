@@ -35,6 +35,8 @@ import { useDispatch} from 'react-redux'
 import { Form, Formik } from "formik";
 import slugs from "resources/slugs";
 import dsahboardDataAction from "store/actions/dashboardAction";
+import { createUseStyles } from "react-jss";
+import useSettings from "hooks/useSettings";
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -54,10 +56,28 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
   },
 }));
 
+const useStyles = createUseStyles({
+  cardsContainer: ({theme,settings}) => {
+    return {
+      // backgroundImage : settings?.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#000004,#000004 94%)`,
+      backgroundColor:'red'
+  }},
+
+  cardRow: {
+      marginTop: 30,
+      '@media (max-width: 768px)': {
+          marginTop: 0
+      }
+  },
+  
+});
+
 const DashboardForm = () => {
 
   // ** Hook
   const theme = useTheme();
+  const {settings} = useSettings()
+  const classes = useStyles({theme,settings})
   const dispatch = useDispatch()
 
   const handleSubmit = (values) => {
@@ -66,17 +86,17 @@ const DashboardForm = () => {
   };
   
   return (
-    <Box
+    <Box 
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "70vh",
-        width:'100%'
+        width:'100%',
       }}
     >
-      <Card sx={{ zIndex: 1, padding: "40px 20px",minWidth:'90%' }}>
-        <CardContent sx={{ padding: "10px" }}>
+      <Card className={classes.cardsContainer} sx={{ zIndex: 1, padding: "40px 20px",minWidth:'90%'}}>
+        <CardContent  sx={{ padding: "10px" }}>
           <Box
             sx={{
               mb: 8,
@@ -97,7 +117,7 @@ const DashboardForm = () => {
           >
             {(formik) => {
               return (
-                <Form onSubmit={formik.handleSubmit}>
+                <Form onSubmit={formik.handleSubmit} >
                   <TextField
                     autoFocus
                     fullWidth
