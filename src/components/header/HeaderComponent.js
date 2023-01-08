@@ -75,13 +75,10 @@ function HeaderComponent() {
     const navigate = useNavigate();
     const { currentItem } = useContext(SidebarContext);
     const theme = useTheme();
-    console.log(theme,'themeishere')
-    const dispatch = useDispatch()
     const {settings,saveSettings} = useSettings()
-    const auth = useSelector(state => state.authLoginReducer)
-    console.log(auth,'authalkfsjlksajflksa')
     const classes = useStyles({ theme,settings });
-    console.log(settings,'settings')
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.authLoginReducer)
 
     let title;
     switch (true) {
@@ -154,7 +151,7 @@ function HeaderComponent() {
                         }}
                     />
                 </div> */}
-                <ModeToggler settings={settings} saveSettings={saveSettings} className={classes.iconStyles}/>
+                <ModeToggler settings={settings} saveSettings={saveSettings}/>
                 <div className={classes.separator}></div>
                 <DropdownComponent
                     label={

@@ -59,8 +59,8 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
 const useStyles = createUseStyles({
   cardsContainer: ({theme,settings}) => {
     return {
-      // backgroundImage : settings?.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#000004,#000004 94%)`,
-      backgroundColor:'red'
+      backgroundImage : settings?.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,rgb(30 41 59),rgb(30 41 59) 94%)`,
+      color : settings?.mode === 'light' ? 'black' : 'white'
   }},
 
   cardRow: {
@@ -95,7 +95,7 @@ const DashboardForm = () => {
         width:'100%',
       }}
     >
-      <Card className={classes.cardsContainer} sx={{ zIndex: 1, padding: "40px 20px",minWidth:'90%'}}>
+      <Card className={classes.cardsContainer} sx={{ padding: "40px 20px",minWidth:'90%'}}>
         <CardContent  sx={{ padding: "10px" }}>
           <Box
             sx={{
@@ -118,6 +118,9 @@ const DashboardForm = () => {
             {(formik) => {
               return (
                 <Form onSubmit={formik.handleSubmit} >
+                  <InputLabel htmlFor="stock" sx={{color : settings?.mode === 'light' ? "black" : "white" ,marginBottom : '5px'}}>
+                    Stocks
+                  </InputLabel>
                   <TextField
                     autoFocus
                     fullWidth
@@ -125,22 +128,22 @@ const DashboardForm = () => {
                     id="stock"
                     value={formik.values.stock}
                     onChange={formik.handleChange}
-                    label="Stocks"
-                    sx={{ marginBottom: 4 }}
+                    placeholder="Stocks"
+                    sx={{ marginBottom: 4,borderRadius : '4px',border : 'none',backgroundColor : 'white'}}
                   />
-                  <FormControl fullWidth>
-                    <InputLabel htmlFor="limit">
-                    Limit
+                    <InputLabel htmlFor="limit" sx={{color : settings?.mode === 'light' ? "black" : "white" ,marginBottom : '5px'}}>
+                      Limit
                     </InputLabel>
                     <OutlinedInput
-                      label="Limit"
+                      fullWidth
                       name="limit"
+                      placeholder="Limit"
                       value={formik.values.limit}
                       id="limit"
                       onChange={formik.handleChange}
                       type={"text" }
+                      sx={{ marginBottom: 4,borderRadius : 'none',border : 'none',backgroundColor : 'white'}}
                     />
-                  </FormControl>
                   <Box
                     sx={{
                       mb: 4,

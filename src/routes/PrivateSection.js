@@ -15,7 +15,6 @@ const useStyles = createUseStyles({
         // backgroundColor : "red"
         // backgroundColor:({theme,settings}) => {console.log(settings,'======++++++++++++++++==');  return settings?.mode === 'light' ? 'white' : 'black'},
         backgroundImage: ({theme,settings}) => {    
-            console.log(settings,']]]]]]]]]')
             let element = document.getElementsByTagName('body')[0]
             element.style.backgroundImage = settings?.mode === 'light' ? `linear-gradient(98deg, #F6F8FB,#D6E0EF 94%)` : `linear-gradient(98deg,#000004,#000004 94%)`
             // element.style.color = 'white'

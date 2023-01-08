@@ -46,7 +46,7 @@ const useStyles = createUseStyles((theme) => ({
         outline: 'none',
         padding: '10px 10px',
         '&:hover': {
-            background: theme.color.paleBlue
+            background: theme.color.lightGrayishBlue
         },
         '&:after': {
             content: '" "',
